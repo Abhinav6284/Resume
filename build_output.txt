@@ -1,0 +1,29 @@
+
+> portfolio@0.1.0 build
+> next build
+
+  Γû▓ Next.js 14.2.35
+
+   Creating an optimized production build ...
+ Γ£ô Compiled successfully
+   Linting and checking validity of types ...
+   Collecting page data ...
+   Generating static pages (0/5) ...
+   Generating static pages (1/5) 
+   Generating static pages (2/5) 
+   Generating static pages (3/5) 
+ Γ£ô Generating static pages (5/5)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                              Size     First Load JS
+Γöî Γùï /                                    235 kB          408 kB
+Γöö Γùï /_not-found                          873 B          88.3 kB
++ First Load JS shared by all            87.4 kB
+  Γö£ chunks/117-2aa062a2e3c08095.js       31.7 kB
+  Γö£ chunks/fd9d1056-f42e3a44b4c14fe1.js  53.6 kB
+  Γöö other shared chunks (total)          2.01 kB
+
+
+Γùï  (Static)  prerendered as static content
+
