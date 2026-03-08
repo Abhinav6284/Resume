@@ -1,4 +1,3 @@
-import dynamic from "next/dynamic";
 import AboutSection from "@/sections/AboutSection";
 import ProjectShowcase from "@/sections/ProjectShowcase";
 import InternshipSection from "@/sections/InternshipSection";
