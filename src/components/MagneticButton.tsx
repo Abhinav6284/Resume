@@ -8,14 +8,16 @@ interface MagneticButtonProps {
   intensity?: number;
   onClick?: () => void;
   href?: string;
+  type?: "button" | "submit" | "reset";
 }
 
-export default function MagneticButton({ 
-  children, 
-  className = "", 
+export default function MagneticButton({
+  children,
+  className = "",
   intensity = 0.2,
   onClick,
-  href
+  href,
+  type = "button"
 }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [position, setPosition] = useState({ x: 0, y: 0 });
@@ -24,13 +26,13 @@ export default function MagneticButton({
     if (!ref.current) return;
     const { clientX, clientY } = e;
     const { height, width, left, top } = ref.current.getBoundingClientRect();
-    
+
     const middleX = clientX - (left + width / 2);
     const middleY = clientY - (top + height / 2);
 
-    setPosition({ 
-      x: middleX * intensity, 
-      y: middleY * intensity 
+    setPosition({
+      x: middleX * intensity,
+      y: middleY * intensity
     });
   };
 
@@ -39,12 +41,12 @@ export default function MagneticButton({
   };
 
   const Component = href ? motion.a : motion.button;
-  const props = href ? { href } : { onClick };
+  const props = href ? { href } : { onClick, type };
 
   return (
-    <div 
+    <div
       ref={ref}
-      onMouseMove={handleMouse} 
+      onMouseMove={handleMouse}
       onMouseLeave={reset}
       className="inline-block"
     >

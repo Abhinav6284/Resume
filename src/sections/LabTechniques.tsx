@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Dna, Microscope, TestTube, GripHorizontal, Droplets } from "lucide-react";
-import PetriDishColonies from "@/components/PetriDishColonies";
 
 const techniques = [
   {
@@ -39,7 +38,7 @@ export default function LabTechniques() {
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     const ctx = gsap.context(() => {
       // Parallax effect for the background text
       gsap.to('.tech-bg-text', {
@@ -59,7 +58,7 @@ export default function LabTechniques() {
 
   return (
     <section id="techniques" ref={containerRef} className="py-40 px-4 relative w-full overflow-hidden bg-white z-10">
-      <div className="tech-bg-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[15vw] font-black tracking-tighter text-gray-100 whitespace-nowrap pointer-events-none -z-10">
+      <div className="tech-bg-text absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-6xl sm:text-[15vw] font-black tracking-tighter text-gray-100 whitespace-nowrap pointer-events-none -z-10">
         METHODOLOGY
       </div>
 
@@ -89,16 +88,16 @@ export default function LabTechniques() {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-accent/10 rounded-3xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             <div className="relative h-full bg-background-secondary border border-gray-200 rounded-3xl p-8 overflow-hidden flex flex-col items-center text-center shadow-lg hover:shadow-xl transition-shadow">
-              
+
               <div className="absolute -top-10 -right-10 w-32 h-32 bg-primary/10 rounded-full blur-2xl group-hover:bg-primary/20 transition-colors duration-500" />
-              
-              <motion.div 
+
+              <motion.div
                 className="w-20 h-20 bg-background border border-white/10 rounded-2xl flex items-center justify-center mb-6 shadow-xl relative overflow-hidden"
               >
                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent opacity-0 group-hover:opacity-100 group-hover:translate-x-full transition-all duration-1000 ease-in-out -skew-x-12" />
                 <tech.icon size={36} className="text-text group-hover:text-accent transition-colors duration-300" />
               </motion.div>
-              
+
               <h3 className="text-2xl font-bold mb-3 tracking-tight text-text">{tech.title}</h3>
               <p className="text-text-secondary text-sm leading-relaxed font-light">
                 {tech.description}
@@ -107,9 +106,6 @@ export default function LabTechniques() {
           </motion.div>
         ))}
       </div>
-      
-      {/* Animated growing petri dish display */}
-      <PetriDishColonies />
     </section>
   );
 }

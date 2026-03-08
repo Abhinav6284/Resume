@@ -4,15 +4,15 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GlowCard from "@/components/GlowCard";
-import { Award, Medal } from "lucide-react";
+import { Award, Medal, FileText } from "lucide-react";
 
 const certificates = [
-  { title: "Introduction to Data Analytics", issuer: "Saylor" },
-  { title: "Introduction to MS Excel", issuer: "Simplilearn" },
-  { title: "PCR and Electrophoresis", issuer: "LPU" },
-  { title: "Good Laboratory Practices (GLP)", issuer: "LPU" },
-  { title: "Oral Presenter", issuer: "MicCon25 International Conference" },
-  { title: "Participant", issuer: "IDEATHON 4.0 Innovation Challenge" },
+  { title: "Introduction to Data Analytics", issuer: "Saylor", link: "/certificates/data analytics.pdf" },
+  { title: "Introduction to MS Excel", issuer: "Simplilearn", link: "/certificates/ms excel.pdf" },
+  { title: "PCR and Electrophoresis", issuer: "LPU", link: "/certificates/pcr and electrophoresis.pdf" },
+  { title: "Good Laboratory Practices (GLP)", issuer: "LPU", link: "/certificates/Good lab practic.pdf" },
+  { title: "Oral Presenter", issuer: "MicCon25 International Conference", link: "/certificates/miccon 2025 .pdf" },
+  { title: "Participant", issuer: "IDEATHON 4.0 Innovation Challenge", link: "/certificates/IDEATHON_EXTERNAL PARTICIPANT_Final-22.pdf" },
 ];
 
 export default function CertificationsSection() {
@@ -55,9 +55,20 @@ export default function CertificationsSection() {
               <h3 className="text-lg font-bold text-text mb-2 tracking-tight group-hover:text-primary transition-colors">
                 {cert.title}
               </h3>
-              <p className="text-text-secondary text-sm font-medium mt-auto">
+              <p className="text-text-secondary text-sm font-medium mt-auto mb-4">
                 {cert.issuer}
               </p>
+              {cert.link && (
+                <a
+                  href={cert.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="mt-auto inline-flex items-center gap-2 text-xs font-semibold tracking-wide text-primary border border-primary/30 bg-primary/10 hover:bg-primary hover:text-white px-4 py-2 rounded-full transition-all duration-300"
+                >
+                  <FileText size={14} />
+                  View Certificate
+                </a>
+              )}
             </GlowCard>
           </motion.div>
         ))}

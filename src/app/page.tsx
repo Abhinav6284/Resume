@@ -8,18 +8,13 @@ import CertificationsSection from "@/sections/CertificationsSection";
 import ContactSection from "@/sections/ContactSection";
 import { FloatingLabIcons } from "@/components/LabEquipmentIcons";
 import HeroSection from "@/sections/HeroSection";
-import CustomCursor from "@/components/CustomCursor";
 
-const LiquidBubbles = dynamic(() => import("@/components/LiquidBubbles"), { ssr: false });
-const ThreeInteractive = dynamic(() => import("@/sections/ThreeInteractive"), { ssr: false });
 const FloatingMicrobes = dynamic(() => import("@/three/FloatingMicrobes"), { ssr: false });
 
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
-      <CustomCursor />
       <FloatingLabIcons />
-      <LiquidBubbles />
       <div className="fixed inset-0 pointer-events-none z-[-1]">
         <FloatingMicrobes />
       </div>
@@ -29,7 +24,6 @@ export default function Home() {
       <LabTechniques />
       <ProjectShowcase />
       <InternshipSection />
-      <ThreeInteractive />
       <Timeline />
       <CertificationsSection />
       <ContactSection />

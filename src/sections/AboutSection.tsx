@@ -4,14 +4,14 @@ import { motion } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import GlowCard from "@/components/GlowCard";
-import { GraduationCap } from "lucide-react";
+import { GraduationCap, Download } from "lucide-react";
 
 export default function AboutSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
-    
+
     const ctx = gsap.context(() => {
       // Add any complex scroll animations here if needed, simple ones done with framer-motion
     }, sectionRef);
@@ -41,15 +41,24 @@ export default function AboutSection() {
           className="md:col-span-4"
         >
           <GlowCard className="h-full p-8 flex flex-col items-center justify-center text-center">
-            {/* Profile Image / Initials */}
-            <div className="w-48 h-48 rounded-full bg-gradient-to-br from-primary to-accent mb-6 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(46,107,255,0.3)] text-white text-5xl font-bold">
-              AP
+            {/* Profile Image */}
+            <div className="w-56 h-56 rounded-full bg-gradient-to-br from-primary to-accent mb-6 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(46,107,255,0.3)] border-4 border-white">
+              <img src="/profile.jpeg" alt="Anshika Pal" className="w-full h-full object-cover" />
             </div>
-            <h3 className="text-2xl font-bold mb-2">Anshika Pal</h3>
+            <h3 className="text-2xl font-bold mb-2 text-text">Anshika Pal</h3>
             <p className="text-primary font-medium mb-4">Ludhiana, Punjab</p>
-            <p className="text-text-secondary text-sm leading-relaxed">
+            <p className="text-text-secondary text-sm leading-relaxed mb-8">
               Biotechnology graduate specialized in Microbiology with hands-on experience in laboratory diagnostics, microbial analysis, and quality testing.
             </p>
+            <a
+              href="/anshika resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 bg-text text-background font-bold tracking-widest rounded-xl hover:bg-primary px-6 py-3 transition-colors duration-300 w-full justify-center"
+            >
+              <Download size={18} />
+              VIEW RESUME
+            </a>
           </GlowCard>
         </motion.div>
 
@@ -67,7 +76,7 @@ export default function AboutSection() {
             <p className="text-text-secondary text-lg leading-relaxed mb-6">
               Skilled in aseptic techniques, spectrophotometry, and laboratory instrumentation. Dedicated to maintaining high standards of quality and precision in microbial isolation and analysis.
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-auto">
               <div className="bg-background-secondary p-4 rounded-xl border border-gray-100">
                 <span className="font-semibold text-primary">Microbial Analysis</span>

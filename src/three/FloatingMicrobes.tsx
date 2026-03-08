@@ -4,12 +4,12 @@ import { useFrame } from "@react-three/fiber";
 import { Instance, Instances } from "@react-three/drei";
 import * as THREE from "three";
 
-const MICROBE_COUNT = 150;
+const MICROBE_COUNT = 40;
 
 function MicrobeParticles() {
   const ref = useRef<THREE.InstancedMesh>(null);
   const dummy = new THREE.Object3D();
-  
+
   // Create randomized initial positions
   const particles = React.useMemo(() => {
     const temp = [];
@@ -31,10 +31,10 @@ function MicrobeParticles() {
 
   useFrame((state) => {
     if (!ref.current) return;
-    
+
     particles.forEach((particle, i) => {
       const t = state.clock.elapsedTime * particle.speed + particle.offset;
-      
+
       dummy.position.set(
         particle.position[0] + Math.sin(t) * 2,
         particle.position[1] + Math.cos(t) * 2,
@@ -47,7 +47,7 @@ function MicrobeParticles() {
       );
       dummy.scale.setScalar(particle.scale);
       dummy.updateMatrix();
-      
+
       ref.current!.setMatrixAt(i, dummy.matrix);
     });
     ref.current.instanceMatrix.needsUpdate = true;
@@ -55,17 +55,15 @@ function MicrobeParticles() {
 
   return (
     <Instances ref={ref} limit={MICROBE_COUNT} castShadow={false} receiveShadow={false}>
-      <sphereGeometry args={[1, 16, 16]} />
-      <meshPhysicalMaterial 
+      <sphereGeometry args={[1, 8, 8]} />
+      <meshStandardMaterial
         color="#00C2A8"
         emissive="#00C2A8"
         emissiveIntensity={0.6}
         transparent
-        opacity={0.4}
+        opacity={0.3}
         blending={THREE.AdditiveBlending}
-        roughness={0.2}
-        transmission={0.9}
-        thickness={0.5}
+        roughness={0.5}
       />
       {particles.map((_, i) => (
         <Instance key={i} />

@@ -8,7 +8,7 @@ export default function ContactSection() {
   return (
     <section id="contact" className="py-32 px-4 relative w-full bg-background border-t border-white/5">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16">
-        
+
         <div>
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -27,7 +27,7 @@ export default function ContactSection() {
               { icon: Mail, label: "Email", value: "76anshikapal@gmail.com" },
               { icon: Linkedin, label: "LinkedIn", value: "linkedin.com/in/anshika-pal" },
             ].map((contact, i) => (
-              <motion.a 
+              <motion.a
                 href={contact.label === "Email" ? `mailto:${contact.value}` : `https://${contact.value}`}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -58,44 +58,45 @@ export default function ContactSection() {
           className="bg-background-secondary border border-gray-200 p-8 md:p-12 rounded-3xl backdrop-blur-md relative overflow-hidden shadow-lg"
         >
           <div className="absolute -top-32 -right-32 w-64 h-64 bg-accent/20 blur-3xl rounded-full pointer-events-none" />
-          
+
           <h3 className="text-2xl font-bold mb-8 text-text">Send a Message</h3>
-          
+
           <form className="space-y-6 relative z-10" onSubmit={(e) => e.preventDefault()}>
             <div className="space-y-2">
               <label className="text-sm font-medium text-text-secondary">Name</label>
-              <input 
-                type="text" 
+              <input
+                type="text"
                 className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-text"
                 placeholder="Dr. Jane Doe"
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-text-secondary">Email</label>
-              <input 
-                type="email" 
+              <input
+                type="email"
                 className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-text"
                 placeholder="jane@institute.org"
               />
             </div>
             <div className="space-y-2">
               <label className="text-sm font-medium text-text-secondary">Message</label>
-              <textarea 
+              <textarea
                 rows={4}
                 className="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary transition-all text-text resize-none"
                 placeholder="Discussing potential collaboration on..."
               />
             </div>
-            <MagneticButton className="w-full hoverable">
-              <button type="submit" className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(46,107,255,0.3)] hover:shadow-[0_0_30px_rgba(46,107,255,0.5)] active:scale-[0.98]">
-                Send Inquiry
-              </button>
+            <MagneticButton
+              type="submit"
+              className="w-full py-4 bg-primary text-white font-bold rounded-xl hover:bg-primary/90 transition-all shadow-[0_0_20px_rgba(46,107,255,0.3)] hover:shadow-[0_0_30px_rgba(46,107,255,0.5)] active:scale-[0.98] hoverable"
+            >
+              Send Inquiry
             </MagneticButton>
           </form>
         </motion.div>
 
       </div>
-      
+
       <div className="mt-32 pt-8 border-t border-gray-200 text-center text-text-secondary text-sm">
         <p>© {new Date().getFullYear()} Anshika Pal. All research rights reserved.</p>
       </div>

@@ -79,22 +79,26 @@ export default function HeroSection() {
       <div className="absolute inset-0 z-0 opacity-40 microscope-canvas-container pointer-events-none">
         <MicroscopeScene />
       </div>
-      
-      <div className="z-10 text-center max-w-4xl mx-auto mt-20 hero-text-content">
+
+      <div className="z-10 text-center max-w-5xl mx-auto mt-20 hero-text-content">
         <motion.h1
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-tight text-text"
+          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-[1.1] text-text px-2"
         >
-          {title.split("").map((letter, index) => (
-            <motion.span
-              key={index}
-              variants={letterVariants}
-              className={letter === " " ? "inline-block w-[0.3em]" : "inline-block"}
-            >
-              {letter}
-            </motion.span>
+          {title.split(" ").map((word, index) => (
+            <span key={index} className="inline-block whitespace-nowrap mr-[0.2em] last:mr-0">
+              {word.split("").map((letter, letterIndex) => (
+                <motion.span
+                  key={letterIndex}
+                  variants={letterVariants}
+                  className="inline-block"
+                >
+                  {letter}
+                </motion.span>
+              ))}
+            </span>
           ))}
         </motion.h1>
 
@@ -102,7 +106,7 @@ export default function HeroSection() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 2.5, duration: 1 }}
-          className="text-xl md:text-3xl text-text-secondary font-light mb-12 tracking-wide"
+          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-text-secondary font-light mb-12 tracking-wide px-4"
         >
           Research • <span className="text-primary font-medium">Microbial Analysis</span> • Laboratory Science
         </motion.p>
@@ -113,14 +117,14 @@ export default function HeroSection() {
           transition={{ delay: 3, duration: 0.8, type: "spring" }}
         >
           <MagneticButton
-            href="#research"
+            href="#projects"
             className="hoverable inline-flex items-center justify-center px-8 py-4 text-base font-semibold text-white bg-primary rounded-full hover:bg-primary/90 hover:scale-[1.05] transition-all duration-300 shadow-[0_0_20px_rgba(46,107,255,0.3)] hover:shadow-[0_0_30px_rgba(46,107,255,0.5)]"
           >
-            Explore Research
+            Explore Projects
           </MagneticButton>
         </motion.div>
       </div>
-      
+
       {/* Decorative gradient blur */}
       <div className="absolute bottom-0 left-0 right-0 h-64 bg-gradient-to-t from-background to-transparent pointer-events-none" />
     </section>

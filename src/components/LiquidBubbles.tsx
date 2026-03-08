@@ -50,7 +50,7 @@ export default function LiquidBubbles() {
         if (!ctx) return;
         ctx.beginPath();
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-        
+
         // Fluid gradient for bubble
         const gradient = ctx.createRadialGradient(
           this.x - this.size * 0.3,
@@ -62,7 +62,7 @@ export default function LiquidBubbles() {
         );
         gradient.addColorStop(0, `rgba(46, 107, 255, ${this.opacity})`); // Primary
         gradient.addColorStop(1, `rgba(0, 194, 168, 0)`);       // Accent clear
-        
+
         ctx.fillStyle = gradient;
         ctx.fill();
         ctx.closePath();
@@ -71,7 +71,7 @@ export default function LiquidBubbles() {
 
     const initBubbles = () => {
       bubbles = [];
-      const numBubbles = Math.floor(window.innerWidth / 30); // Adaptive amount
+      const numBubbles = Math.floor(window.innerWidth / 60); // Reduced adaptive amount
       for (let i = 0; i < numBubbles; i++) {
         bubbles.push(new Bubble());
       }
@@ -80,12 +80,12 @@ export default function LiquidBubbles() {
     const animate = () => {
       if (!ctx || !canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
-      
+
       bubbles.forEach(bubble => {
         bubble.update();
         bubble.draw();
       });
-      
+
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -100,8 +100,8 @@ export default function LiquidBubbles() {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-[-2] opacity-60"
       style={{ mixBlendMode: 'screen' }}
     />
