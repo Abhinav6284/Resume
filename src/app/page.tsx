@@ -9,15 +9,10 @@ import ContactSection from "@/sections/ContactSection";
 import { FloatingLabIcons } from "@/components/LabEquipmentIcons";
 import HeroSection from "@/sections/HeroSection";
 
-const FloatingMicrobes = dynamic(() => import("@/three/FloatingMicrobes"), { ssr: false });
-
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between relative">
       <FloatingLabIcons />
-      <div className="fixed inset-0 pointer-events-none z-[-1]">
-        <FloatingMicrobes />
-      </div>
 
       <HeroSection />
       <AboutSection />

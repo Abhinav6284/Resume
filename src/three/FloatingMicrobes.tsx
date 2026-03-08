@@ -75,8 +75,23 @@ function MicrobeParticles() {
 import { Canvas } from "@react-three/fiber";
 
 export default function FloatingMicrobes() {
+  const [isMobile, setIsMobile] = React.useState(true); // default true for SSR safety
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    handleResize(); // check on mount
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  if (isMobile) return null;
+
   return (
-    <Canvas camera={{ position: [0, 0, 15], fov: 60 }} gl={{ alpha: true }}>
+    <Canvas
+      dpr={[1, 1.5]}
+      camera={{ position: [0, 0, 15], fov: 60 }}
+      gl={{ alpha: true, antialias: false, powerPreference: "high-performance" }}
+    >
       <ambientLight intensity={0.5} />
       <directionalLight position={[10, 10, 10]} intensity={1} />
       <MicrobeParticles />

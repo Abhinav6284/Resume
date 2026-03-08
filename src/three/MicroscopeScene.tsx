@@ -6,7 +6,11 @@ import Microscope from "@/three/Microscope";
 
 export default function MicroscopeScene() {
   return (
-    <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
+    <Canvas
+      dpr={[1, 1.5]}
+      camera={{ position: [0, 0, 8], fov: 45 }}
+      gl={{ antialias: false, powerPreference: "high-performance" }}
+    >
       <ambientLight intensity={1.5} />
       <directionalLight position={[10, 10, 10]} intensity={2} />
       <Environment preset="studio" />

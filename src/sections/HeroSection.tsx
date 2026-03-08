@@ -3,11 +3,7 @@ import React, { useRef, useEffect } from "react";
 import { motion, Variants } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import dynamic from "next/dynamic";
 import MagneticButton from "@/components/MagneticButton";
-
-const MicroscopeScene = dynamic(() => import("@/three/MicroscopeScene"), { ssr: false });
-
 export default function HeroSection() {
   const sectionRef = useRef<HTMLDivElement>(null);
   const title = "Exploring the Invisible World of Microbiology";
@@ -25,19 +21,6 @@ export default function HeroSection() {
             trigger: sectionRef.current,
             start: "top top",
             end: "bottom center",
-            scrub: true,
-          },
-        });
-
-        // Microscope zooms in massively to act as a transition
-        gsap.to('.microscope-canvas-container', {
-          scale: 20, // Huge zoom into the lens
-          opacity: 0, // Fades out at the very end to reveal next section
-          transformOrigin: "center center",
-          scrollTrigger: {
-            trigger: sectionRef.current,
-            start: "top top",
-            end: "bottom top",
             scrub: true,
           },
         });
@@ -76,37 +59,35 @@ export default function HeroSection() {
       id="home"
       className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-4"
     >
-      <div className="absolute inset-0 z-0 opacity-40 microscope-canvas-container pointer-events-none">
-        <MicroscopeScene />
-      </div>
-
-      <div className="z-10 text-center max-w-5xl mx-auto mt-20 hero-text-content">
-        <motion.h1
+      <div className="relative z-20 flex flex-col items-center justify-center h-full w-full max-w-5xl mx-auto px-6 lg:px-12 pt-32 text-center hero-text-content">
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter mb-6 leading-[1.1] text-text px-2"
+          className="mb-8"
         >
-          {title.split(" ").map((word, index) => (
-            <span key={index} className="inline-block whitespace-nowrap mr-[0.2em] last:mr-0">
-              {word.split("").map((letter, letterIndex) => (
-                <motion.span
-                  key={letterIndex}
-                  variants={letterVariants}
-                  className="inline-block"
-                >
-                  {letter}
-                </motion.span>
-              ))}
-            </span>
-          ))}
-        </motion.h1>
+          <h1 className="text-5xl sm:text-7xl lg:text-[6rem] font-bold leading-[1.1] tracking-tighter text-text flex flex-wrap justify-center gap-x-4">
+            {title.split(" ").map((word, index) => (
+              <span key={index} className="inline-block whitespace-nowrap">
+                {word.split("").map((letter, i) => (
+                  <motion.span
+                    key={`${index}-${i}`}
+                    variants={letterVariants}
+                    className="inline-block"
+                  >
+                    {letter}
+                  </motion.span>
+                ))}
+              </span>
+            ))}
+          </h1>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 2.5, duration: 1 }}
-          className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-text-secondary font-light mb-12 tracking-wide px-4"
+          transition={{ delay: 2.5, duration: 0.8 }}
+          className="text-lg sm:text-2xl text-text-secondary mb-12 font-light tracking-wide max-w-3xl"
         >
           Research • <span className="text-primary font-medium">Microbial Analysis</span> • Laboratory Science
         </motion.p>
