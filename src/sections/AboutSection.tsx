@@ -44,7 +44,7 @@ export default function AboutSection() {
           <GlowCard className="h-full p-8 flex flex-col items-center justify-center text-center">
             {/* Profile Image */}
             <div className="w-56 h-56 rounded-full bg-gradient-to-br from-primary to-accent mb-6 flex items-center justify-center overflow-hidden shadow-[0_0_30px_rgba(46,107,255,0.3)] border-4 border-white">
-              <Image src="/profile.jpeg" alt="Anshika Pal" width={224} height={224} className="w-full h-full object-cover" />
+              <Image src="/profile.jpeg" alt="Anshika Pal" width={224} height={224} className="w-full h-full object-cover object-center" />
             </div>
             <h3 className="text-2xl font-bold mb-2 text-text">Anshika Pal</h3>
             <p className="text-primary font-medium mb-4">Ludhiana, Punjab</p>
